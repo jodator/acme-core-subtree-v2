@@ -5,3 +5,5 @@ export function can(role, action) {
   if (rank < 0) return false;
   return rank >= ROLES.indexOf(action === 'read' ? 'viewer' : 'operator');
 }
+
+export const v1 = 1;
