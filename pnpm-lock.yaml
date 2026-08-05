@@ -1,0 +1,31 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+overrides:
+  semver@<7: ^7.7.3
+
+importers:
+
+  .: {}
+
+  apps/api:
+    dependencies:
+      '@acme/api-types':
+        specifier: workspace:*
+        version: link:../../packages/api-types
+      '@acme/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+    devDependencies:
+      '@acme/test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
+
+  packages/api-types: {}
+
+  packages/core: {}
+
+  packages/test-utils: {}

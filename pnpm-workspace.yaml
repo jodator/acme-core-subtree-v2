@@ -1,0 +1,8 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+minimumReleaseAge: 4320
+overrides:
+  "semver@<7": ^7.7.3
+ignoreDepScripts: true

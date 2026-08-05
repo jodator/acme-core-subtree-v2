@@ -1,0 +1,20 @@
+{
+  "name": "@acme/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "node -e \"process.stdout.write('built @acme/api\\n')\"",
+    "test": "node --test src/",
+    "typecheck": "node -e \"process.stdout.write('tc @acme/api\\n')\"",
+    "codegen": "node src/codegen.js"
+  },
+  "dependencies": {
+    "@acme/core": "workspace:*",
+    "@acme/api-types": "workspace:*"
+  },
+  "devDependencies": {
+    "@acme/test-utils": "workspace:*"
+  }
+}
