@@ -1,0 +1,14 @@
+{
+  "name": "@acme/api-types",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "node -e \"process.stdout.write('built @acme/api-types\\n')\"",
+    "test": "node --test src/",
+    "typecheck": "node -e \"process.stdout.write('tc @acme/api-types\\n')\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
