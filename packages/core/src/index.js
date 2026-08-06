@@ -14,3 +14,5 @@ export const v2 = 2;
 export const v3 = 3;
 
 export const v4 = 4;
+
+export { severityFor, SEVERITIES } from './severity.js';
