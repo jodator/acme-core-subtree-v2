@@ -9,3 +9,8 @@ test('denies viewer writes', () => {
 test('allows admin writes', () => {
   assert.equal(handle(fakeRequest({ role: 'admin', action: 'write' })).status, 200);
 });
+test('unknown route is 404 before any permission check', () => {
+  const response = handle(fakeRequest({ role: 'admin', method: 'GET', path: '/nope' }));
+  assert.equal(response.status, 404);
+  assert.deepEqual(response.body, { error: 'not found' });
+});
