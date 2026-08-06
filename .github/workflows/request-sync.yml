@@ -1,0 +1,21 @@
+name: request monorepo sync
+# After a merge here, ask the private monorepo to run its sync job.
+# Needs the SYNC_TOKEN secret (same fine-grained PAT); skips politely when it is not set,
+# so contributors' forks and the pre-secret period stay green.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dispatch sync-open on the monorepo
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "SYNC_TOKEN not set — skipping (sync stays manual)"; exit 0
+          fi
+          gh workflow run sync-open.yml -R jodator/acme-platform-subtree-v2
