@@ -1,11 +1,17 @@
 name: CI
-on: [pull_request]
+on: [pull_request, push]
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4        # version comes from packageManager in package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22               # node --test is used by the packages
+          cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm -r run build && pnpm -r run test
+      - run: pnpm -r run build
+      - run: pnpm -r run test
       - name: lockfile churn guard
         run: git diff --exit-code -- pnpm-lock.yaml
